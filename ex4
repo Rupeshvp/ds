@@ -1,0 +1,48 @@
+
+#include <stdio.h>
+#include <string.h>
+
+void printAnagrams(char str[]) {
+    int len = strlen(str);
+    char sorted[len];
+
+    strcpy(sorted, str);
+    printf("%s ", str);
+
+    while (next_permutation(sorted, sorted + len)) {
+        printf("%s ", sorted);
+    }
+    printf("\n");
+}
+
+int main() {
+    char str[] = "abc";
+    printAnagrams(str);
+    return 0;
+}
+#include <stdio.h>
+#include <string.h>
+
+void swap(char *x, char *y) {
+    char temp = *x;
+    *x = *y;
+    *y = temp;
+}
+
+void printAnagrams(char str[]) {
+    int len = strlen(str);
+    int i;
+
+    for (i = 0; i < len; i++) {
+        swap(&str[i], &str[0]);
+        printf("%s ", str);
+        printAnagrams(str + 1);
+        swap(&str[i], &str[0]);
+    }
+}
+
+int main() {
+    char str[] = "abc";
+    printAnagrams(str);
+    return 0;
+}
